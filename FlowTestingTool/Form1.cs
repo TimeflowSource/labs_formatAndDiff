@@ -174,4 +174,12 @@ namespace FlowTestingTool
 		public string T; // type of commit
 		public int L; // leghth or count depends on type
 	}
+
+	public struct FlowChange
+	{
+		public long N; // Ordering number of change
+		public long P; // Position in file
+		public long D; // Number of chars to delete after position
+		public string C; // Content to insert in position
+	}
 }
