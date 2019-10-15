@@ -178,8 +178,8 @@ namespace FlowTestingTool
 	public struct FlowChange
 	{
 		public long N; // Ordering number of change
-		public long P; // Position in file
-		public long D; // Number of chars to delete after position
+		public int P; // Position in file
+		public int D; // Number of chars to delete after position
 		public string C; // Content to insert in position
 	}
 }
