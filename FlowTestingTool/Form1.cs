@@ -24,6 +24,7 @@ namespace FlowTestingTool
 
 			D2 = textBox2;
 			D3 = textBox3;
+			L1 = label1;
 
 			comboBox1.Items.AddRange(new object[] {
 				new OnTextChangeUpdatingMode(textBox1, this),
@@ -81,6 +82,7 @@ namespace FlowTestingTool
 
 		public static TextBox D2;
 		public static TextBox D3;
+		public static Label L1;
 
 		public FlowFile ff = new FlowFile();
 
@@ -104,6 +106,7 @@ namespace FlowTestingTool
 		// @TODO basic file info
 
 		public string FullContent { get; private set; } = "";
+		public string PatchedContent { get; private set; } = "";
 
 		public readonly List<FlowMicroCommit> MicroPathes = new List<FlowMicroCommit>();
 		public readonly List<FlowChange> Changes = new List<FlowChange>();
@@ -117,9 +120,13 @@ namespace FlowTestingTool
 			var change = FlowDiff.FindChange(LastN++, FullContent, newContent);
 			Changes.Add(change);
 
-			Form1.D2.Text = "<" + FlowDiff.AcceptChange(FullContent, change) + ">";
+			Form1.D2.Text = "<" + FlowDiff.AcceptChangeDebug(FullContent, change) + ">";
+			PatchedContent = FlowDiff.AcceptChange(PatchedContent, change);
 			Form1.D3.Text = change.ToString() + "\r\n" + 
 				Form1.D3.Text.Substring(0, Math.Min(Form1.D3.Text.Length, 1000));
+
+			Form1.L1.Text = '"' + newContent + '"' + "\r\n\r\n" + '"' + PatchedContent + '"';
+			
 
 			FullContent = newContent;
 			return true;
@@ -200,9 +207,13 @@ namespace FlowTestingTool
 		public int D; // Number of chars to delete after position
 		public string C; // Content to insert in position
 
+		public int d_ncL;
+		public int d_p2;
+		public int d_i;
+
 		public override string ToString()
 		{
-			return string.Format("[{0}, {1}, {2}, {3}]", N, P, D, C);
+			return string.Format("[{0}, {1}, {2}, '{3}' | ncl:{4}, p2:{5}, i:{6}]", N, P, D, C, d_ncL, d_p2, d_i);
 		}
 	}
 }

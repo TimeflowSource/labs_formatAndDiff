@@ -34,11 +34,13 @@
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.label1);
 			this.panel1.Controls.Add(this.button1);
 			this.panel1.Controls.Add(this.comboBox1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -96,6 +98,15 @@
 			this.textBox3.Size = new System.Drawing.Size(316, 351);
 			this.textBox3.TabIndex = 2;
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(322, 6);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(35, 13);
+			this.label1.TabIndex = 2;
+			this.label1.Text = "label1";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,6 +120,7 @@
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -122,6 +134,7 @@
 		private System.Windows.Forms.TextBox textBox3;
 		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Label label1;
 	}
 }
 

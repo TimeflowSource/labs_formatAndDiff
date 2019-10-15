@@ -19,7 +19,8 @@ namespace FlowTestingTool
 			//int maxL = oL > nL ? oL : nL;
 
 
-			int p1 = 0, p2 = 0;
+			int p = oL > 0 ? oL : 0;
+			int ncL = 0, d = 0, p2 = 0;
 			char c1, c2;
 
 			int i = 0;
@@ -29,30 +30,43 @@ namespace FlowTestingTool
 				c2 = newContent[i];
 				if (c1 != c2)
 				{
-					p1 = i;
+					p = i;
 					break;
 				}
 			}
 
-			for (i = 1; i < minL; i++)
+			//oL--;
+			//nL--;
+
+			for (i = 0; i < minL - p; i++)
 			{
-				c1 = oldContent[oL - i];
-				c2 = newContent[nL - i];
+				c1 = oldContent[oL - i - 1];
+				c2 = newContent[nL - i - 1];
 				if (c1 != c2)
 				{
-					p2 = oL - i;
 					break;
 				}
 			}
+			p2 = oL + 1 - i;
+			d = oL - i - p;
+			ncL = nL - i - p;
 
-			int d = p2 - p1;
+			if (ncL < 0)
+			{
+				d -= ncL;
+				p += ncL;
+			}
 
 			return new FlowChange()
 			{
 				N = num,
-				P = p1,
+				P = p,
 				D = d,
-				C = d > 0 ? newContent.Substring(p1, d) : ""
+				C = ncL > 0 ? newContent.Substring(p, ncL) : "",
+
+				d_p2 = p2,
+				d_ncL = ncL,
+				d_i = i,
 			};
 		}
 
@@ -62,6 +76,14 @@ namespace FlowTestingTool
 				content.Substring(0, change.P) +
 				change.C +
 				content.Substring(change.P + change.D);
+		}
+
+		public static string AcceptChangeDebug(string content, FlowChange change)
+		{
+			string s1 = content.Substring(0, change.P);
+			string s2 = "{" + change.C + "}";
+			string s3 = content.Substring(change.P + change.D);
+			return s1 + s2 + s3;
 		}
 	}
 }
