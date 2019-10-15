@@ -42,9 +42,9 @@
 			this.panel1.Controls.Add(this.button1);
 			this.panel1.Controls.Add(this.comboBox1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.panel1.Location = new System.Drawing.Point(0, 458);
+			this.panel1.Location = new System.Drawing.Point(0, 351);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(1038, 114);
+			this.panel1.Size = new System.Drawing.Size(1038, 221);
 			this.panel1.TabIndex = 3;
 			// 
 			// button1
@@ -73,7 +73,7 @@
 			this.textBox1.Location = new System.Drawing.Point(0, 0);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(316, 458);
+			this.textBox1.Size = new System.Drawing.Size(316, 351);
 			this.textBox1.TabIndex = 0;
 			// 
 			// textBox2
@@ -83,7 +83,7 @@
 			this.textBox2.Location = new System.Drawing.Point(316, 0);
 			this.textBox2.Multiline = true;
 			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(316, 458);
+			this.textBox2.Size = new System.Drawing.Size(316, 351);
 			this.textBox2.TabIndex = 1;
 			// 
 			// textBox3
@@ -93,7 +93,7 @@
 			this.textBox3.Location = new System.Drawing.Point(632, 0);
 			this.textBox3.Multiline = true;
 			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(316, 458);
+			this.textBox3.Size = new System.Drawing.Size(316, 351);
 			this.textBox3.TabIndex = 2;
 			// 
 			// Form1

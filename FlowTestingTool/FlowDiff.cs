@@ -34,13 +34,13 @@ namespace FlowTestingTool
 				}
 			}
 
-			for (i = 0; i < minL; i++)
+			for (i = 1; i < minL; i++)
 			{
 				c1 = oldContent[oL - i];
 				c2 = newContent[nL - i];
 				if (c1 != c2)
 				{
-					p2 = i;
+					p2 = oL - i;
 					break;
 				}
 			}
@@ -52,8 +52,16 @@ namespace FlowTestingTool
 				N = num,
 				P = p1,
 				D = d,
-				C = newContent.Substring(p1, d),
+				C = d > 0 ? newContent.Substring(p1, d) : ""
 			};
+		}
+
+		public static string AcceptChange(string content, FlowChange change)
+		{
+			return
+				content.Substring(0, change.P) +
+				change.C +
+				content.Substring(change.P + change.D);
 		}
 	}
 }

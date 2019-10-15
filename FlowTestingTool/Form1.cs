@@ -35,6 +35,8 @@ namespace FlowTestingTool
 				});
 
 			comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+
+			comboBox1.SelectedIndex = 0;
 		}
 
 		private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -104,10 +106,26 @@ namespace FlowTestingTool
 		public string FullContent { get; private set; } = "";
 
 		public readonly List<FlowMicroCommit> MicroPathes = new List<FlowMicroCommit>();
+		public readonly List<FlowChange> Changes = new List<FlowChange>();
 
 		public long LastN { get; private set; }
 
 		public bool Commit(string newContent)
+		{
+			if (newContent == FullContent) return false;
+
+			var change = FlowDiff.FindChange(LastN++, FullContent, newContent);
+			Changes.Add(change);
+
+			Form1.D2.Text = "<" + FlowDiff.AcceptChange(FullContent, change) + ">";
+			Form1.D3.Text = change.ToString() + "\r\n" + 
+				Form1.D3.Text.Substring(0, Math.Min(Form1.D3.Text.Length, 1000));
+
+			FullContent = newContent;
+			return true;
+		}
+
+		public bool Commit2(string newContent)
 		{
 			//var mc = new FlowMicroCommit();
 
@@ -181,5 +199,10 @@ namespace FlowTestingTool
 		public int P; // Position in file
 		public int D; // Number of chars to delete after position
 		public string C; // Content to insert in position
+
+		public override string ToString()
+		{
+			return string.Format("[{0}, {1}, {2}, {3}]", N, P, D, C);
+		}
 	}
 }
