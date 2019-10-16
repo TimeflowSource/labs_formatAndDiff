@@ -20,7 +20,6 @@ namespace FlowTestingTool
 
 
 			int p = oL > 0 ? oL : 0;
-			int ncL = 0, d = 0, p2 = 0;
 			char c1, c2;
 
 			int i = 0;
@@ -34,22 +33,15 @@ namespace FlowTestingTool
 					break;
 				}
 			}
-
-			//oL--;
-			//nL--;
-
 			for (i = 0; i < minL - p; i++)
 			{
 				c1 = oldContent[oL - i - 1];
 				c2 = newContent[nL - i - 1];
-				if (c1 != c2)
-				{
-					break;
-				}
+				if (c1 != c2) break;
 			}
-			p2 = oL + 1 - i;
-			d = oL - i - p;
-			ncL = nL - i - p;
+			int p2 = oL + 1 - i;
+			int d = oL - i - p;
+			int ncL = nL - i - p;
 
 			if (ncL < 0)
 			{

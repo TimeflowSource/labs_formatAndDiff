@@ -207,9 +207,11 @@ namespace FlowTestingTool
 		public int D; // Number of chars to delete after position
 		public string C; // Content to insert in position
 
+		#region debug info
 		public int d_ncL;
 		public int d_p2;
 		public int d_i;
+		#endregion
 
 		public override string ToString()
 		{
